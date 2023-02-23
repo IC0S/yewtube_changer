@@ -1,15 +1,24 @@
 // ==UserScript==
-// @name         YouTube to Yewtu
+// @name         YouTube to Yewtu Redirect
 // @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  Changes all instances of "youtube.de" to "yewtu.be"
-// @author       Your Name
-// @match        https://*.youtube.de/*
+// @version      1
+// @description  Redirects all YouTube links to their corresponding Yewtu.be links
+// @match        *://*/*
 // @grant        none
 // ==/UserScript==
 
 (function() {
     'use strict';
 
-    document.body.innerHTML = document.body.innerHTML.replace(/youtube\.de/g, 'yewtu.be');
+    var links = document.getElementsByTagName("a");
+    var len = links.length;
+
+    for (var i = 0; i < len; i++) {
+        var link = links[i];
+
+        if (link.href.includes("youtube.com") || link.href.includes("youtu.be")) {
+            link.href = link.href.replace("youtube.com", "yewtu.be");
+            link.href = link.href.replace("youtu.be", "yewtu.be");
+        }
+    }
 })();
