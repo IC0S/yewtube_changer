@@ -20,5 +20,9 @@
             link.href = link.href.replace("youtube.com", "yewtu.be");
             link.href = link.href.replace("youtu.be", "yewtu.be");
         }
+        if (link.href.includes("reddit.com") || link.href.includes("reddit.de")) {
+            link.href = link.href.replace("reddit.de", "teddit.net");
+            link.href = link.href.replace("reddit.com", "teddit.net");
+        }
     }
 })();
